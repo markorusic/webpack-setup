@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -20,5 +21,11 @@ module.exports = {
            presets: ['env', 'stage-0']
         }
     }]
-  }
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      include: /\.bundle\.js$/,
+      minimize: true
+    })
+  ]
 }
